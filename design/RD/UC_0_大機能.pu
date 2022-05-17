@@ -1,0 +1,38 @@
+@startuml "大機能"
+
+rectangle pmmaster {
+    '大機能'
+
+    package PK_01 as "共通" {
+        usecase FN_0101 as "ユーザ管理"
+        usecase FN_0102 as "認証認可"
+        usecase FN_0103 as "ワークフロー"
+    }
+
+    package PK_02 as "プロジェクト計画" {
+        usecase FN_0201 as "見積（ボトムアップ）"
+        usecase FN_0202 as "見積（トップダウン）"
+        usecase FN_0203 as "大工程管理"
+        usecase FN_0204 as "体制・人員管理"
+        usecase FN_0205 as "プロジェクトルール管理"
+        usecase FN_0206 as "コスト管理"
+        usecase FN_0207 as "ステークホルダ管理"
+    }
+
+    package PK_03 as "プロジェクト管理" {
+        usecase FN_0301 as "プロジェクト管理"
+        usecase FN_0302 as "WBS"
+        usecase FN_0303 as "成果物管理"
+        usecase FN_0304 as "イベント管理"
+        usecase FN_0305 as "リスク管理"
+        usecase FN_0305 as "品質管理"
+    }
+
+    package PK_04 as "プロジェクト流用" {
+        usecase FN_0401 as "指標値管理"
+        usecase FN_0402 as "プロジェクトテンプレート管理"
+    }
+
+}
+
+@enduml
