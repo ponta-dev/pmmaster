@@ -4,7 +4,7 @@ rectangle pmmaster {
     '大機能'
 
     package PK_01 as "共通" {
-        usecase FN_0101 as "ユーザ管理"
+        usecase FN_0101 as "アカウント管理"
         usecase FN_0102 as "認証認可"
         usecase FN_0103 as "ワークフロー"
     }

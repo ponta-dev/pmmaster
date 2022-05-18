@@ -2,6 +2,7 @@
 
 package PK_01 as "管理" {
     actor AC_0101 as "システム管理者"
+    actor AC_0102 as "利用者"
 }
 
 package PK_02 as "プロジェクト人員" {
