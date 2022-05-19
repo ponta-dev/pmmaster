@@ -23,14 +23,14 @@ split
     end
     |ホーム画面|
 split again
-    |アカウント設定画面|
     #palegreen:アカウント設定画面|
+    #skyblue:アカウント表示;
 
     split
         #skyblue:アカウント削除;
         |トップ画面|
         end
-        |アカウント設定画面|
+        |ホーム画面|
     split again
         #skyblue:アカウント更新;
         end
