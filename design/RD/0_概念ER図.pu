@@ -1,0 +1,14 @@
+@startuml "概念ER図"
+
+entity EN_0101 as "アカウント情報" {
+    String アカウントID PK
+    String アカウント名
+    String メールアドレス
+}
+
+entity EN_0301 as "プロジェクト情報" {
+    String プロジェクトID PK
+    String プロジェクト名
+}
+
+@enduml
