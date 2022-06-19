@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+    id 'war'
+    id 'org.springframework.boot' version "${version_spring_boot}"
+    id 'jacoco'
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+group = 'com.github.pontadev'
+version = '1.0.0'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	// web
+    implementation  "org.springframework.boot:spring-boot-starter-web:${version_spring_boot}"
+    providedRuntime "org.springframework.boot:spring-boot-starter-tomcat:${version_spring_boot}"
+    // util
+    implementation  "org.springframework.boot:spring-boot-starter-actuator:${version_spring_boot}"
+    implementation  "org.springframework.boot:spring-boot-starter-validation:${version_spring_boot}"
+    implementation  "org.springframework.boot:spring-boot-starter-aop:${version_spring_boot}"
+    // database
+    implementation  "org.springframework.boot:spring-boot-starter-jdbc:${version_spring_boot}"
+    implementation  "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version_mybatis}"
+    providedRuntime "com.h2database:h2:${version_h2}"
+    // security
+    implementation  "org.springframework.boot:spring-boot-starter-security:${version_spring_boot}"
+
+    // test
+    testImplementation  "org.springframework.boot:spring-boot-starter-test:${version_spring_boot}"
+    testImplementation  "org.mybatis.spring.boot:mybatis-spring-boot-starter-test:${version_mybatis}"
+    testImplementation  "org.junit.jupiter:junit-jupiter-api:${version_junit}"
+    testImplementation  "org.junit.jupiter:junit-jupiter-params:${version_junit}"
+    testRuntimeOnly     "org.junit.jupiter:junit-jupiter-engine:${version_junit}"
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
