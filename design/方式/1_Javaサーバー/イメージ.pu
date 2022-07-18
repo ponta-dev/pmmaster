@@ -1,0 +1,18 @@
+@startuml "開発環境‗ソフトウェア構成"
+
+package pmmaster {
+    node gradle as "Gradle 7"
+    node java as "Open JDK 17"
+    frame spring as "Spring Boot" {
+        component tomcat as "Tomcat(組み込み)"
+    }
+    database h2 as "H2 Database (PostgreSQL)"
+
+    frame junit as "JUnit5"
+
+    gradle -- java
+    spring -- gradle
+    spring - h2
+}
+
+@enduml
