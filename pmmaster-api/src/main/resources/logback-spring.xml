@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE logback>
+<configuration debug="true">
+	<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"></conversionRule>
+	
+	<!-- 実行モードごとの変数設定 -->
+	<springProfile name="dev">
+		<property name="mode" value="DEV_MODE"></property>
+	</springProfile>
+	<springProfile name="prod">
+		<property name="mode" value="PROD_MODE"></property>
+	</springProfile>
+	
+	<!-- ログパターン -->
+	<property name="DEFAULT_PATTERN" value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%-5level) : ${PID:- } %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %msg %n"></property>
+	<property name="APPLOG_PATTERN" value="[APP_LOG] %clr(%-13([${mode}])) %clr(%-5level) : %msg %n"></property>
+	
+	<!-- ログ出力パス -->
+	<property name="LOG_PATH" value="C:/home/pmmaster/logs"></property>
+	
+	<!-- アペンダー -->
+	<appender name="CONSOLE_DEFAULT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${DEFAULT_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE_APP_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${APPLOG_PATTERN}</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+		<file>${LOG_PATH}/pmmaster-api.app.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/pmmaster-api.app.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	
+	<!-- ロガー -->
+	<logger name="com.github.pontadev.pmmaster" level="DEBUG">
+		<appender-ref ref="FILE_APP_LOG"></appender-ref>
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="CONSOLE_DEFAULT"></appender-ref>
+	</root>
+</configuration>
